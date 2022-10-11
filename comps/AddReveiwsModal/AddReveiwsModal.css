@@ -1,0 +1,54 @@
+/** @format */
+
+.show-more-rev {
+  margin: 5px;
+  margin-right: auto;
+  padding: 5px;
+  cursor: pointer;
+  background-color: var(--sec-clr);
+  border: thin solid var(--shadow-clr);
+  border-radius: 5px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.show-more-rev:hover {
+  border-color: var(--shadow-clr);
+  background-color: var(--hover-clr);
+}
+.comment-form textarea {
+  max-width: 100%;
+  /* padding: 1px; */
+  border-bottom: thin solid var(--hover-clr);
+}
+.comment-form .send-btn {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  margin-left: auto;
+  border-radius: 50%;
+  padding: 5px;
+}
+.comment-form {
+  min-width: 90%;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin: 20px auto;
+}
+.comment-form:focus {
+  outline: thin solid var(--hover-clr);
+  border: none;
+}
+/* @media (min-width: 650px) {
+  .comment-form {
+    min-width: 600px;
+    height: 300px;
+  }
+} */

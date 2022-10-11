@@ -1,0 +1,100 @@
+/** @format */
+
+.front {
+  padding: 3em 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-image: url("/images/Web-Header-Background-1.svg");
+  background-position-y: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: var(--sec-clr);
+  border-radius: 0 0 15px 15px;
+  box-shadow: -2px 2px 5px var(--shadow-clr);
+}
+
+.welcome {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: #eee;
+  font-size: larger;
+  font-weight: 500;
+  font-style: italic;
+  text-align: center;
+}
+.front a {
+  padding: 1em 2em;
+  margin-top: 2em;
+  text-decoration: none;
+  font-size: large;
+  color: #fefefe;
+  border-radius: 5px;
+  background-color: var(--dark-orange-clr);
+  border: 2px solid var(--dark-orange-clr);
+  transition: all 300ms;
+}
+.front a:hover {
+  color: var(--dark-orange-clr);
+  background-color: var(--light-orange-clr);
+}
+.searchForm {
+  margin: 10px;
+  width: 60%;
+  box-shadow: none;
+  background-color: var(--sec-clr);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 90%;
+  padding: 0.5em;
+  margin: 1.5em auto 1.2em;
+  border-radius: 8px;
+  background-color: var(--sec-clr);
+  box-shadow: -2px 2px 5px var(--shadow-clr);
+  accent-color: var(--dark-orange-clr);
+}
+.searchForm input {
+  max-width: 80%;
+  margin: 0;
+  border: none;
+  background-color: var(--prime-clr);
+  font-family: "Nunito", sans-serif;
+  width: 100%;
+  padding: 0.4em 0;
+  font-size: 1rem;
+  text-indent: 5px;
+  color: var(--font-clr);
+  border-bottom: 2px solid var(--hover-clr);
+  background-color: var(--sec-clr);
+}
+.searchForm input::placeholder {
+  font-size: small;
+}
+.searchForm .submitBtn {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  box-shadow: -2px 2px 5px var(--shadow-clr);
+  background-color: var(--dark-orange-clr);
+}
+.searchForm .submitBtn:hover {
+  color: var(--dark-orange-clr);
+  background-image: linear-gradient(
+    var(--light-orange-clr),
+    var(--light-orange-clr)
+  );
+}

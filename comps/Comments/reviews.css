@@ -1,0 +1,45 @@
+/** @format */
+
+.comments-container {
+  padding: 0.5em;
+  margin: 0.5em auto;
+}
+
+.comment {
+  position: relative;
+  padding: 0.3em;
+  margin-bottom: 0.1em;
+  color: var(--font-clr);
+  border-radius: 10px;
+  transition: all 300ms;
+  border: thin solid var(--shadow-clr);
+  background-color: var(--sec-clr);
+}
+.comment:hover {
+  border-color: var(--shadow-clr);
+  background-color: var(--hover-clr);
+}
+.comment .auther {
+  display: flex;
+  align-items: center;
+}
+.comment .date {
+  position: absolute;
+  top: 10%;
+  right: 5%;
+  font-size: 12px;
+  opacity: 0.6;
+}
+.comment .auther_name {
+  padding: 0.3em;
+}
+.comment .auther_img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid var(--shadow-clr);
+}
+.comment-body {
+  padding: 0.3em 0;
+  text-indent: 10px;
+}

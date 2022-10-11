@@ -1,0 +1,29 @@
+/** @format */
+
+.buttonCon {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.googleButton {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 5px;
+  min-width: 190px;
+  background: var(--sec-clr);
+  color: var(--font-clr);
+  border:thin solid var(--shadow-clr);
+  font-size: 1rem;
+  padding: 10px;
+}
+
+.googleButton:hover {
+  background: var(--sec-clr);
+  color: var(--font-clr);
+  /* border-color: var(--sec-clr); */
+  cursor: pointer;
+}

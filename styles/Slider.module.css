@@ -1,0 +1,48 @@
+/** @format */
+.imgHolder {
+  border-radius: 10px;
+  min-width: 50%;
+  max-width: 50%;
+  padding: 0 25%;
+  scroll-snap-align: center;
+  border-radius: 10px;
+}
+.imgCon {
+  max-width: 93%;
+  min-width: 93%;
+  border-radius: 10px;
+  background: var(--sec-clr);
+  box-shadow: -2px 2px 10px var(--shadow-clr);
+  /* margin-bottom: 30px; */
+}
+.imgCon .offerImg {
+  min-height: 190px;
+  max-height: 190px;
+  min-width: calc(100% - 20px);
+  max-width: calc(100% - 20px);
+  margin: 10px;
+  margin-bottom: 0;
+  border-radius: 10px;
+}
+.imgCon .imgTextCon {
+  width: 100%;
+  text-indent: 10px;
+  padding: 10px 0;
+}
+.imgCon .imgText {
+  font-size: 1.1rem;
+}
+.imgCon .cost {
+  font-size: 0.9rem;
+}
+.cost span {
+  color: green;
+}
+/* @media (min-width: 700px) {
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    color: #fff;
+    background-color: #0005;
+    padding: 10px;
+  }
+} */

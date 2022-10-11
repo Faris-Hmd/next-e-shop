@@ -1,0 +1,87 @@
+/** @format */
+.cart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  transition: all 200ms;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.cartItem {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: min(95%, 450px);
+  box-shadow: -1px 1px 5px var(--shadow-clr);
+  margin: 0.3em auto;
+  background-color: var(--sec-clr);
+  border-radius: 5px;
+  transition: all 200ms;
+  border: 2px solid var(--sec-clr);
+}
+.cartItem:hover {
+  border-color: var(--shadow-clr);
+  background-color: var(--hover-clr);
+}
+
+.cartItem img {
+  margin: 5px;
+  width: 20%;
+  min-height: 50px;
+  max-height: 50px;
+  border: thin solid var(--shadow-clr);
+  border-radius: 5px;
+}
+.cartItem .itemDesc {
+  text-align: left;
+  margin: 5px;
+  max-width: 35%;
+  min-width: 35%;
+  font-size: small;
+  /* background: red; */
+}
+.cartItem .item-name,
+.itemPrice {
+}
+.itemPrice {
+  color: green;
+  font-size: smaller;
+}
+.isOffer {
+  font-size: small;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 5px;
+  margin-left: auto;
+}
+.editBtns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  background: var(--prime-clr);
+  border-radius: 5px;
+}
+.editBtn,
+.deleteBtn {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.deleteBtn {
+  border-right: thin solid var(--sec-clr);
+}
+.spbtw {
+  justify-content: space-between;
+}
+.searchFor {
+  text-align: left;
+  width: 90%;
+}
