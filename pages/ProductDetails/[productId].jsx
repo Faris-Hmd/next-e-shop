@@ -11,7 +11,7 @@ import {
 import { db } from "../../Firebase/firebase";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination, Scrollbar } from "swiper";
-import { Offers } from "../../comps/offers/Offers";
+import { Offers } from "../../comps/Offers/Offers";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";

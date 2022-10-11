@@ -1,5 +1,5 @@
 import { Categoris } from "../comps/Categories/Categories";
-import { Offers } from "../comps/offers/Offers";
+import { Offers } from "../comps/Offers/Offers";
 import Welcome from "../comps/Welcome/Welcome";
 import { db } from "../Firebase/firebase";
 const Home = ({ offers }) => {
