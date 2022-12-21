@@ -14,5 +14,5 @@ const arr = [];
     querySnapshot.forEach((doc) =>
       arr.push({ ...doc.data(), id: doc.id })
     );
-  res.status(200).json({ arr})
+  res.status(200).json({ arr:arr})
 }
