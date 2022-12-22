@@ -1,30 +1,26 @@
 /** @format */
-
-import { getRedirectResult, signInWithRedirect } from "firebase/auth";
-import { GoogleAuthProvider } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
-import { app } from "../Firebase/firebase";
+// import { app } from "../Firebase/firebase";
 
-const provider = new GoogleAuthProvider();
 export const UserContext = createContext();
 
 export const UserProvider = (props) => {
   const [currentUser, setCurrentUser] = useState(null);
-
   const getRedirectResultFunc = async () => {
-    const { getAuth } = await import("firebase/auth");
-    const auth = getAuth(app);
-    getRedirectResult(auth)
-      .then((result) => {
-        const user = result.user;
-        window.localStorage.setItem("currentUser", JSON.stringify(user));
-        window.localStorage.setItem("loginReq", "false");
-        setUserData(user);
-      })
-      .catch((error) => {
-        window.localStorage.setItem("loginReq", "false");
-        console.log(error);
-      });
+  //   const { getRedirectResult } = import("firebase/auth");
+  //   const { getAuth } = await import("firebase/auth");
+  //   const auth = getAuth(app);
+  //   getRedirectResult(auth)
+  //     .then((result) => {
+  //       const user = result.user;
+  //       window.localStorage.setItem("currentUser", JSON.stringify(user));
+  //       window.localStorage.setItem("loginReq", "false");
+  //       setUserData(user);
+  //     })
+  //     .catch((error) => {
+  //       window.localStorage.setItem("loginReq", "false");
+  //       console.log(error);
+  //     });
   };
 
   useEffect(() => {
@@ -52,25 +48,27 @@ export const UserProvider = (props) => {
   };
   //------------------------ LOGIN ------------------
   const handleLogin = async () => {
-const { getAuth } = await import("firebase/auth");
-    const auth = getAuth(app);
-    signInWithRedirect(auth, provider).then(
-      window.localStorage.setItem("loginReq", "true")
-    );
+  //   const { GoogleAuthProvider } = import("firebase/auth");
+  //   const provider = new GoogleAuthProvider();
+  //   const { signInWithRedirect } = import("firebase/auth");
+  //   const { getAuth } = await import("firebase/auth");
+  //   const auth = getAuth(app);
+  //   signInWithRedirect(auth, provider).then(
+  //     window.localStorage.setItem("loginReq", "true")
+  //   );
   };
   //----------------------- SIGNOUT -----------------------
   const handleSignout = async () => {
-    const { getAuth } = await import("firebase/auth");
-    const auth = getAuth(app);
-    console.log("from out");
-
-    auth
-      .signOut()
-      .then(() => {
-        setCurrentUser(null);
-        window.localStorage.removeItem("currentUser");
-      })
-      .catch((e) => console.log(e));
+  //   const { getAuth } = await import("firebase/auth");
+  //   const auth = getAuth(app);
+  //   console.log("from out");
+  //   auth
+  //     .signOut()
+  //     .then(() => {
+  //       setCurrentUser(null);
+  //       window.localStorage.removeItem("currentUser");
+  //     })
+  //     .catch((e) => console.log(e));
   };
   return (
     <UserContext.Provider

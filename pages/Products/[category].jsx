@@ -1,9 +1,9 @@
 /** @format */
 import Link from "next/link";
 import styles from "../../styles/Products.module.css";
-import { db } from "../../Firebase/firebase";
 const Products = (props) => {
-  const products = JSON.parse(props.products);
+  const products = props.products;
+  console.log(products);
   return (
     <>
       <div className="label">Products</div>
@@ -47,28 +47,16 @@ const Products = (props) => {
 export default Products;
 
 export async function getServerSideProps(context) {
-  const { params } = context;
-  console.log(params);
-  const { collection, getDocs, query, where } = await import(
-    "firebase/firestore"
+  const data = await fetch("http://localhost:3000/api/getProducts").then(
+    (res) => res.json()
   );
-  const arr = [];
-  const querySnapshot = await getDocs(
-    query(
-      collection(db, "products"),
-      where("productCate", "==", params.category)
-    )
-  );
-  querySnapshot.forEach((doc) => {
-    arr.push({ ...doc.data(), id: doc.id });
-  });
+  console.log(data);
   return {
     props: {
-      products: JSON.stringify(arr),
+      products: data.products,
     },
   };
 }
-
 // export async function getStaticPaths() {
 //   return {
 //     paths: [

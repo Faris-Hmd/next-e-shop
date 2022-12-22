@@ -9,22 +9,9 @@ import {
   FaThumbsUp,
   FaWhatsapp,
 } from "react-icons/fa";
-import {
-  addDoc,
-  collection,
-  deleteDoc,
-  doc,
-  getDoc,
-  getDocs,
-  query,
-  serverTimestamp,
-  setDoc,
-  where,
-} from "firebase/firestore";
 import { toast } from "react-toastify";
 import { FaRegStar } from "react-icons/fa";
 import { UserContext } from "../../Context/UserProvider";
-import { db } from "../../Firebase/firebase";
 import styles from "./ActionButton.module.css";
 export function ActionButtons({ product }) {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -36,95 +23,87 @@ export function ActionButtons({ product }) {
     toast.warning("you have to be login ");
   };
   const getFavorites = async () => {
-    const querySnapshot = await getDocs(
-      query(collection(db, "favorites"), where("userId", "==", user.id)),
-      where("productId", "==", product.id)
-    );
-    querySnapshot.forEach((doc) => {
-      if (doc.data().productId === product.id) {
-        setFavoDocRef(doc.id);
-        setIsFavorite(true);
+    fetch("http://localhost:3000/api/favorites?id=" + product.id + user.id)
+      .then((res) => res.json())
+      .then((data) => setIsFavorite(data));
+  };
+
+  const handleAddTofavo = async () => {
+    const data = {
+      productId: product.id,
+      userId: user.id,
+      productImgs: product.productImgs[0].url,
+      productName: product.productName,
+      productCate: product.productCate,
+      productPrice: product.productPrice,
+    };
+    const response = await fetch(
+      "http://localhost:3000/api/favorites?id=" + product.id + user.id,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ data }),
       }
-    });
+    );
+    const { state } = await response.json();
+    console.log(state);
+    if (state === true) setIsFavorite(true);
+  };
+  const removeFromFavo = async () => {
+    const response = await fetch(
+      "http://localhost:3000/api/favorites?id=" + product.id + user.id,
+      { method: "DELETE" }
+    );
+    const { state } = await response.json();
+    console.log(state);
+    if (state === true) setIsFavorite(false);
   };
 
-  const getRating = async () => {
-    const querySnapshot = await getDoc(
-      doc(db, "rating", user.id + product.id)
-    ).catch((e) => console.log(e));
-    if (querySnapshot.exists()) {
-      if (querySnapshot.data().rating === "like") setIsLiked(true);
-      if (querySnapshot.data().rating === "dislike") setIsDisliked(true);
-    }
-  };
+  // const addLike = async () => {
+  //   if (!user) {
+  //     t();
+  //     return;
+  //   }
+  //   if (isLiked) return;
+  //   setIsDisliked(false);
+  //   setDoc(doc(db, "rating", user.id + product.id), {
+  //     userId: user.id,
+  //     productId: product.id,
+  //     rating: "like",
+  //   })
+  //     .then(setIsLiked(true))
+  //     .catch((e) => {
+  //       console.log(e);
+  //     });
+  // };
 
-  const handleAddTofavo = async (id) => {
-    try {
-      const docRef = await addDoc(collection(db, "favorites"), {
-        productId: product.id,
-        userId: user.id,
-        productImgs: product.productImgs[0].url,
-        productName: product.productName,
-        productCate: product.productCate,
-        productPrice: product.productPrice,
-        date: serverTimestamp(),
-      }).then(setIsFavorite(true));
-      console.log("Document written with ID: ", docRef.id);
-      setFavoDocRef(docRef.id);
-    } catch (e) {
-      console.error("Error adding document: ", e);
-    }
-  };
-
-  const removeFromFavo = () => {
-    deleteDoc(doc(db, "favorites", favoDocRef))
-      .then(setIsFavorite(false))
-      .catch((e) => console.log(e));
-  };
-
-  const addLike = async () => {
-    if (!user) {
-      t();
-      return;
-    }
-    if (isLiked) return;
-    setIsDisliked(false);
-    setDoc(doc(db, "rating", user.id + product.id), {
-      userId: user.id,
-      productId: product.id,
-      rating: "like",
-    })
-      .then(setIsLiked(true))
-      .catch((e) => {
-        console.log(e);
-      });
-  };
-
-  const addDislike = async () => {
-    if (!user) {
-      t();
-      return;
-    }
-    if (isDisliked) return;
-    setIsLiked(false);
-    setDoc(doc(db, "rating", user.id + product.id), {
-      userId: user.id,
-      productId: product.id,
-      rating: "dislike",
-    })
-      .then(setIsDisliked(true))
-      .catch((e) => {
-        console.log(e);
-      });
-  };
+  // const addDislike = async () => {
+  //   if (!user) {
+  //     t();
+  //     return;
+  //   }
+  //   if (isDisliked) return;
+  //   setIsLiked(false);
+  //   setDoc(doc(db, "rating", user.id + product.id), {
+  //     userId: user.id,
+  //     productId: product.id,
+  //     rating: "dislike",
+  //   })
+  //     .then(setIsDisliked(true))
+  //     .catch((e) => {
+  //       console.log(e);
+  //     });
+  // };
 
   useEffect(() => {
-    user && getRating();
+    // user && getRating();
     user && getFavorites();
   }, [user]); //eslint-disable-line
   return (
     <div className={styles.socialBtnCon}>
-      <div
+      {/* <div
         className={styles.socialBtn}
         onClick={() => {
           addLike();
@@ -136,8 +115,8 @@ export function ActionButtons({ product }) {
           <FaRegThumbsUp size={"20px"} />
         )}
         Like
-      </div>
-      <div
+      </div> */}
+      {/* <div
         className={styles.socialBtn}
         onClick={() => {
           addDislike();
@@ -149,7 +128,7 @@ export function ActionButtons({ product }) {
           <FaRegThumbsDown size={"20px"} />
         )}
         dislike
-      </div>
+      </div> */}
       <div>
         <a className={styles.socialBtn} href={"tel:00" + product.ownerPhone}>
           <FaPhone size={"20px"} />
@@ -169,8 +148,8 @@ export function ActionButtons({ product }) {
         className={styles.socialBtn}
         onClick={() => {
           !user && t();
-          user && isFavorite === false && handleAddTofavo(product.id);
-          user && isFavorite === true && removeFromFavo();
+          user && isFavorite === false && handleAddTofavo();
+          user && isFavorite === true && removeFromFavo(product.id);
         }}
       >
         {isFavorite ? <FaStar size={"20px"} /> : <FaRegStar size={"20px"} />}
