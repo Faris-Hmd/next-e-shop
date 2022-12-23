@@ -27,11 +27,13 @@ export const Categoris = () => {
         {category &&
           category.map((category) => {
             return (
-              <Link href={`/Products/${category.name}`} key={category.name}>
-                <a className={styles.category}>
-                  <img src={category.img} alt={category.name} width="50px" />
-                  <div>{category.name}</div>
-                </a>
+              <Link
+                className={styles.category}
+                href={`/Products/${category.name}`}
+                key={category.name}
+              >
+                <img src={category.img} alt={category.name} width="50px" />
+                <div>{category.name}</div>
               </Link>
             );
           })}

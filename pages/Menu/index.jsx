@@ -29,40 +29,28 @@ const Menu = () => {
       <div className={styles.menu}>
         {user && <UserProfile />}
         <div className={styles.optCon}>
-          <Link href="/">
-            <a className={styles.opt}>
-              <BsHouseDoor />
-              Home
-            </a>
+          <Link href="/" className={styles.opt}>
+            <BsHouseDoor />
+            Home
           </Link>
-          <Link href="/AddOffer">
-            <a className={styles.opt}>
-              <BiCategoryAlt /> Add Offer
-            </a>
+          <Link href="/AddOffer" className={styles.opt}>
+            <BiCategoryAlt /> Add Offer
           </Link>
-          <Link href="/addAd">
-            <a className={styles.opt}>
-              <BiPlusCircle />
-              Add Advartise
-            </a>
+          <Link href="/addAd" className={styles.opt}>
+            <BiPlusCircle />
+            Add Advartise
           </Link>
-          <Link href="/MyAds">
-            <a className={styles.opt}>
-              <RiAdvertisementLine /> My Advartisments
-            </a>
+          <Link href="/MyAds" className={styles.opt}>
+            <RiAdvertisementLine /> My Advartisments
           </Link>
           {user && (
-            <Link href={"/Favorites/" + user.id}>
-              <a className={styles.opt}>
-                <FaRegStar />
-                Favorites
-              </a>
+            <Link href={"/Favorites/" + user.id} className={styles.opt}>
+              <FaRegStar />
+              Favorites
             </Link>
           )}
-          <Link href="/">
-            <a className={styles.opt}>
-              <BiCategoryAlt /> Categories
-            </a>
+          <Link href="/" className={styles.opt}>
+            <BiCategoryAlt /> Categories
           </Link>
           <div className={styles.opt} onClick={() => toggleTheme()}>
             {darkMode ? (
@@ -74,26 +62,20 @@ const Menu = () => {
           </div>
         </div>
         <div className={styles.optCon}>
-          <Link href="/cart">
-            <a className={styles.opt}>
-              <MdOutlinePrivacyTip />
-              Privecy and Security
-            </a>
+          <Link href="/cart" className={styles.opt}>
+            <MdOutlinePrivacyTip />
+            Privecy and Security
           </Link>
-          <Link href="/login">
-            <a className={styles.opt}>
-              <BsInfoCircle />
-              About
-            </a>
+          <Link href="/login" className={styles.opt}>
+            <BsInfoCircle />
+            About
           </Link>
 
           {user === null ? (
             <>
-              <Link href="/login">
-                <a className={styles.opt}>
-                  <MdOutlineLogin />
-                  Login
-                </a>
+              <Link href="/login" className={styles.opt}>
+                <MdOutlineLogin />
+                Login
               </Link>
             </>
           ) : (

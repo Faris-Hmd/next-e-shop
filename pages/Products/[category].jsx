@@ -1,44 +1,56 @@
 /** @format */
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useQuery } from "react-query";
 import styles from "../../styles/Products.module.css";
-const Products = (props) => {
-  const products = props.products;
-  console.log(products);
+const Products = () => {
+  const [products, setProducts] = useState([]);
+  const getData = async () => {
+    return await fetch("http://localhost:3002/api/getProducts").then((res) => {
+      return res.json();
+    });
+  };
+
+  const { data, status } = useQuery("product", getData );
+  useEffect(() => {
+    // getData().then((data) => setProducts(data));
+    // setProducts(data);
+  }, [data]);
+
+  if (status === "loading") return <h1>loading query...</h1>;
+  if (status === "error") return <h1>error </h1>;
+
   return (
     <>
       <div className="label">Products</div>
       <div className={styles.productsContainer}>
-        {products.length > 0 ? (
-          products.map((product) => {
-            return (
-              <Link key={product.id} href={`/ProductDetails/${product.id}`}>
-                <a className={styles.product}>
-                  <div
-                    className={styles.productCoverImg}
-                    style={{
-                      backgroundImage: `url(${product.productImgs[0].url})`,
-                    }}
-                  ></div>
-                  <div className="sep-line"></div>
+        {data.map((product) => {
+          return (
+            <Link
+              className={styles.product}
+              key={product.id}
+              href={`/ProductDetails/${product.id}`}
+            >
+              <div
+                className={styles.productCoverImg}
+                style={{
+                  backgroundImage: `url(${product.productImgs[0].url})`,
+                }}
+              ></div>
+              <div className="sep-line"></div>
 
-                  <div className={styles.productDetails}>
-                    <div className={styles.productName}>
-                      {product.productName}
-                    </div>
-                    <div className={styles.productRating}>
-                      rating : {product.rating}
-                    </div>
-                    <div className={styles.productPrice}>
-                      price : <span>${product.productPrice}</span>
-                    </div>
-                  </div>
-                </a>
-              </Link>
-            );
-          })
-        ) : (
-          <h2>loding...</h2>
-        )}
+              <div className={styles.productDetails}>
+                <div className={styles.productName}>{product.productName}</div>
+                <div className={styles.productRating}>
+                  rating : {product.rating}
+                </div>
+                <div className={styles.productPrice}>
+                  price : <span>${product.productPrice}</span>
+                </div>
+              </div>
+            </Link>
+          );
+        })}
       </div>
     </>
   );
@@ -46,17 +58,17 @@ const Products = (props) => {
 
 export default Products;
 
-export async function getServerSideProps(context) {
-  const data = await fetch("http://localhost:3000/api/getProducts").then(
-    (res) => res.json()
-  );
-  console.log(data);
-  return {
-    props: {
-      products: data.products,
-    },
-  };
-}
+// export async function getServerSideProps(context) {
+//   const data = await fetch("http://localhost:3000/api/getProducts").then(
+//     (res) => res.json()
+//   );
+//   console.log(data);
+//   return {
+//     props: {
+//       products: data.products,
+//     },
+//   };
+// }
 // export async function getStaticPaths() {
 //   return {
 //     paths: [

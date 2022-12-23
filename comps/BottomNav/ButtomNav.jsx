@@ -11,26 +11,21 @@ const ButtomNav = () => {
 
   return (
     <div className={styles.buttomNav}>
-      <Link href="/">
-        <a className={styles.page}>
-          <FaHome size={"20px"} /> Home
-        </a>
+      <Link href="/" className={styles.page}>
+        <FaHome size={"20px"} /> Home
       </Link>
-      <Link href="/AddAd">
-        <a className={styles.page}>
-          <BiPlusCircle size={"20px"} />
-          Add AD
-        </a>
+      <Link href="/AddAd" className={styles.page}>
+        <BiPlusCircle size={"20px"} />
+        Add AD
       </Link>
-      <Link href="/Menu">
-        <a className={styles.page}>
-          <FaBars size={"19px"} /> Menu
-        </a>
+      <Link href="/Menu" className={styles.page}>
+        <FaBars size={"19px"} /> Menu
       </Link>
-      <Link href={user ? `/Favorites/${user.id}` : "/Login"}>
-        <a className={styles.page}>
-          <FaRegStar size={"19px"} /> Favorite
-        </a>
+      <Link
+        href={user ? `/Favorites/${user.id}` : "/Login"}
+        className={styles.page}
+      >
+        <FaRegStar size={"19px"} /> Favorite
       </Link>
     </div>
   );

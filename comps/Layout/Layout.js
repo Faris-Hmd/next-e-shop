@@ -1,4 +1,5 @@
 /** @format */
+import { ReactQueryDevtools } from "react-query/devtools";
 import ButtomNav from "../BottomNav/ButtomNav";
 import Navbar from "../Navbar/Navbar";
 const Layout = ({ children }) => {
@@ -10,6 +11,7 @@ const Layout = ({ children }) => {
       <Navbar />
       <ButtomNav />
       <main>{children}</main>
+      <ReactQueryDevtools />
     </div>
   );
 };
