@@ -11,7 +11,7 @@ const Products = () => {
     });
   };
 
-  const { data, status } = useQuery("product", getData );
+  const { data, status } = useQuery("product", getData, { staleTime: 30000 });
   useEffect(() => {
     // getData().then((data) => setProducts(data));
     // setProducts(data);
