@@ -1,21 +1,23 @@
 /** @format */
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import { useQuery } from "react-query";
 import styles from "../../styles/Products.module.css";
+const getData = async ({ queryKey }) => {
+  const category = queryKey[1];
+  console.log(category);
+  return await fetch(
+    `http://localhost:3002/api/getProducts?productCate=${category}`
+  ).then((res) => {
+    return res.json();
+  });
+};
 const Products = () => {
-  const [products, setProducts] = useState([]);
-  const getData = async () => {
-    return await fetch("http://localhost:3002/api/getProducts").then((res) => {
-      return res.json();
-    });
-  };
-
-  const { data, status } = useQuery("product", getData, { staleTime: 30000 });
-  useEffect(() => {
-    // getData().then((data) => setProducts(data));
-    // setProducts(data);
-  }, [data]);
+  const router = useRouter();
+  const category = router.query.category;
+  const { data: products, status } = useQuery([category, category], getData, {
+    staleTime: 20000,
+  });
 
   if (status === "loading") return <h1>loading query...</h1>;
   if (status === "error") return <h1>error </h1>;
@@ -24,7 +26,7 @@ const Products = () => {
     <>
       <div className="label">Products</div>
       <div className={styles.productsContainer}>
-        {data.map((product) => {
+        {products?.map((product) => {
           return (
             <Link
               className={styles.product}
@@ -44,6 +46,9 @@ const Products = () => {
                 <div className={styles.productRating}>
                   rating : {product.rating}
                 </div>
+                <div className={styles.productRating}>
+                  Category : {product.productCate}
+                </div>
                 <div className={styles.productPrice}>
                   price : <span>${product.productPrice}</span>
                 </div>
@@ -57,46 +62,3 @@ const Products = () => {
 };
 
 export default Products;
-
-// export async function getServerSideProps(context) {
-//   const data = await fetch("http://localhost:3000/api/getProducts").then(
-//     (res) => res.json()
-//   );
-//   console.log(data);
-//   return {
-//     props: {
-//       products: data.products,
-//     },
-//   };
-// }
-// export async function getStaticPaths() {
-//   return {
-//     paths: [
-//       {
-//         params: { category: "phones" },
-//       },
-//       {
-//         params: { category: "pc" },
-//       },
-//       {
-//         params: { category: "speakers" },
-//       },
-//       {
-//         params: { category: "headphone" },
-//       },
-//       {
-//         params: { category: "playstation" },
-//       },
-//       {
-//         params: { category: "hard drive" },
-//       },
-//       {
-//         params: { category: "watch" },
-//       },
-//       {
-//         params: { category: "storge" },
-//       },
-//     ],
-//     fallback: false,
-//   };
-// }

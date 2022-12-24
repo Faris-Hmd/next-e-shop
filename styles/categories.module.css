@@ -27,6 +27,7 @@
   background-color: var(--hover-clr);
 }
 .category img {
+  height: 100px;
   width: 75%;
   padding-bottom: 10px;
   filter: drop-shadow(5px);

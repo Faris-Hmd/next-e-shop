@@ -1,15 +1,17 @@
 /** @format */
 
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../Firebase/firebase";
 
 export default async function handler(req, res) {
-  console.log(
-    "-------get products-------------------------------"
+  const url = new URL("http://localhost:3002/" + req.url);
+  const searchParams = url.searchParams;
+  const category = searchParams.get("productCate");
+  console.log(category);
+  const querySnapShot = await getDocs(
+    query(collection(db, "products"), where("productCate", "==", category))
   );
-  const q = await getDocs(collection(db, "products"));
-
-  const products = q.docs.map((product) => {
+  const products = querySnapShot.docs.map((product) => {
     return {
       ...product.data(),
       id: product.id,

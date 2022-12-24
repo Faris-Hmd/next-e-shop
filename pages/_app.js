@@ -1,16 +1,19 @@
 /** @format */
 import { ThemeProvider } from "../Context/themeContext";
-// import { UserProvider } from "../Context/UserProvider";
 import "../styles/globals.css";
 import Layout from "../comps/Layout/Layout";
 import { UserProvider } from "../Context/UserProvider";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
+
+const queryClient = new QueryClient();
 function MyApp({ Component, pageProps }) {
-  const queryClient = new QueryClient();
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <UserProvider>
+          <ReactQueryDevtools />
+
           <Layout>
             <Component {...pageProps} />
           </Layout>
