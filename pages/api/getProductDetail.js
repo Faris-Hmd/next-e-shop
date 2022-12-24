@@ -6,7 +6,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../Firebase/firebase";
 
 export default async function handler(req, res) {
-  const url = new URL("http://localhost:3002/" + req.url);
+  const url = new URL("https://next-e-shop-omega.vercel.app/" + req.url);
   const searchParams = url.searchParams;
   console.log(searchParams.get("productId"));
   const q = await getDoc(doc(db, "products", searchParams.get("productId")));

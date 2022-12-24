@@ -16,7 +16,7 @@ const getData = async ({ queryKey }) => {
   const productId = queryKey[1];
   // console.log(productId);
   return await fetch(
-    `http://localhost:3002/api/getProductDetail?productId=${productId}`
+    `https://next-e-shop-omega.vercel.app/api/getProductDetail?productId=${productId}`
   ).then((res) => {
     return res.json();
   });

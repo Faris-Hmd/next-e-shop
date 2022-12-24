@@ -7,7 +7,7 @@ const getData = async ({ queryKey }) => {
   const category = queryKey[1];
   console.log(category);
   return await fetch(
-    `http://localhost:3002/api/getProducts?productCate=${category}`
+    `https://https://next-e-shop-omega.vercel.app/api/getProducts?productCate=${category}`
   ).then((res) => {
     return res.json();
   });
