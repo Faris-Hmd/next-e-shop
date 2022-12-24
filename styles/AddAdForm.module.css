@@ -1,0 +1,146 @@
+/** @format */
+.help {
+  opacity: 0.7;
+  text-indent: 5px;
+}
+.addAdForm {
+  width: 95%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  padding: 0.5em;
+  margin: 1.5em auto 1.2em;
+  border-radius: 8px;
+  background-color: var(--sec-clr);
+  box-shadow: -2px 2px 5px var(--shadow-clr);
+  accent-color: var(--dark-orange-clr);
+}
+.productImg{
+width: 250px;
+}
+.side {
+  width: 100%;
+}
+.label {
+  padding: 0.2em;
+  cursor: pointer;
+  background-color: var(--hover-clr);
+  border-radius: 5px;
+}
+.input,
+.select,
+.textarea {
+  font-family: "Nunito", sans-serif;
+  width: 100%;
+  padding: 0.2em 0;
+  margin-top: 5px;
+  font-size: 1rem;
+  text-indent: 5px;
+  color: var(--font-clr);
+  border: none;
+  border-bottom: 2px solid var(--hover-clr);
+  background-color: var(--sec-clr);
+}
+.input:focus {
+  background-color: none;
+}
+
+.input::placeholder {
+  font-size: 1.1rem;
+  color: var(--font-clr);
+  opacity: 0.5;
+}
+
+.input:focus {
+  outline: 1px solid var(--dark-orange-clr);
+}
+.inputContainer {
+  width: 100%;
+  margin-bottom: 0.8em;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.proImgInput {
+  display: none;
+}
+
+.input:disabled {
+  opacity: 0.3;
+}
+.accept {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.2em;
+  background-color: inherit;
+  border: 1px solid var(--shadow-clr);
+  border-radius: 5px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.submitBtn:disabled {
+  opacity: 0.5;
+}
+.submitBtn {
+  width: 100px;
+  margin: auto 70%;
+}
+.submitBtn,
+.proImgInputLabal {
+  font-size: medium;
+  color: #eee;
+  border: 2px solid var(--dark-orange-clr);
+  border-radius: 5px;
+  background-image: linear-gradient(
+    var(--dark-orange-clr),
+    var(--dark-orange-clr)
+  );
+  box-shadow: -0.5px 0.5px 5px var(--shadow-clr);
+  transition: all 500ms;
+}
+
+.submitBtn:hover,
+.proImgInputLabal:hover {
+  color: var(--dark-orange-clr);
+  background-image: linear-gradient(
+    var(--light-orange-clr),
+    var(--light-orange-clr)
+  );
+}
+.proImgInputLabal {
+  padding: 0.5em;
+  margin: 10px auto;
+  width: 50%;
+  text-align: center;
+}
+
+input.resetBtn {
+  color: #eee;
+  /* background-image: linear-gradient(var(--prime-clr), var(--prime-clr)); */
+  transition: all 300ms;
+  background-color: rgb(159, 21, 21);
+}
+
+input.resetBtn:hover {
+  border-color: crimson;
+}
+@media (min-width: 750px) {
+  .loginForm {
+    width: 350px;
+  }
+  .side {
+    width: 45%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+  }
+  .side:nth-child(1) {
+    border-right: 2px solid var(--hover-clr);
+  }
+}
