@@ -122,7 +122,7 @@ const AddAdForm = () => {
         <div className={styles.side}>
           <div className={styles.inputContainer}>
             {images.length > 0 && (
-              <Slider preView={1}>
+              <Slider preView={2} >
                 {images.map((img, index) => {
                   return (
                     <SwiperSlide

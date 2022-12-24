@@ -11,12 +11,13 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import { baseUrl } from "..";
 
 const getData = async ({ queryKey }) => {
   const productId = queryKey[1];
   // console.log(productId);
   return await fetch(
-    `https://next-e-shop-omega.vercel.app/api/getProductDetail?productId=${productId}`
+    `${baseUrl}/api/getProductDetail?productId=${productId}`
   ).then((res) => {
     return res.json();
   });

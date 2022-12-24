@@ -13,8 +13,7 @@ function MyApp({ Component, pageProps }) {
       <ThemeProvider>
         <UserProvider>
           <ReactQueryDevtools />
-
-          <Layout>
+          <Layout >
             <Component {...pageProps} />
           </Layout>
         </UserProvider>

@@ -1,10 +1,11 @@
 /** @format */
 
 import { collection, getDocs, query, where } from "firebase/firestore";
+import { baseUrl } from "..";
 import { db } from "../../Firebase/firebase";
 
 export default async function handler(req, res) {
-  const url = new URL("https://next-e-shop-omega.vercel.app" + req.url);
+  const url = new URL(baseUrl + req.url);
   const searchParams = url.searchParams;
   const category = searchParams.get("productCate");
   console.log(category);

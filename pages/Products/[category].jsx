@@ -2,15 +2,16 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useQuery } from "react-query";
+import { baseUrl } from "..";
 import styles from "../../styles/Products.module.css";
 const getData = async ({ queryKey }) => {
   const category = queryKey[1];
   console.log(category);
-  return await fetch(
-    `https://next-e-shop-omega.vercel.app/api/getProducts?productCate=${category}`
-  ).then((res) => {
-    return res.json();
-  });
+  return await fetch(`${baseUrl}/api/getProducts?productCate=${category}`).then(
+    (res) => {
+      return res.json();
+    }
+  );
 };
 const Products = () => {
   const router = useRouter();
@@ -45,9 +46,6 @@ const Products = () => {
                 <div className={styles.productName}>{product.productName}</div>
                 <div className={styles.productRating}>
                   rating : {product.rating}
-                </div>
-                <div className={styles.productRating}>
-                  Category : {product.productCate}
                 </div>
                 <div className={styles.productPrice}>
                   price : <span>${product.productPrice}</span>

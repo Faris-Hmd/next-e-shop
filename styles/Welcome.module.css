@@ -7,9 +7,10 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  min-height: 100vh;
   background-image: url("/images/Web-Header-Background-1.svg");
   background-position-y: top;
-  background-size: cover;
+  /* background-size: contain; */
   background-repeat: no-repeat;
   background-color: var(--sec-clr);
   border-radius: 0 0 15px 15px;
@@ -23,14 +24,14 @@
   align-items: center;
   width: 100%;
   color: #eee;
-  font-size: larger;
+  font-size: 2rem;
   font-weight: 500;
   font-style: italic;
   text-align: center;
 }
 .front a {
   padding: 1em 2em;
-  margin-top: 2em;
+  margin-top: 7em;
   text-decoration: none;
   font-size: large;
   color: #fefefe;
@@ -44,23 +45,16 @@
   background-color: var(--light-orange-clr);
 }
 .searchForm {
-  margin: 10px;
-  width: 60%;
-  box-shadow: none;
+  margin: 1.5em auto 1.2em;
+  width: 70%;
   background-color: var(--sec-clr);
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 5px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  width: 90%;
   padding: 0.5em;
-  margin: 1.5em auto 1.2em;
   border-radius: 8px;
   background-color: var(--sec-clr);
-  box-shadow: -2px 2px 5px var(--shadow-clr);
+  /* box-shadow: -2px 2px 5px var(--shadow-clr); */
   accent-color: var(--dark-orange-clr);
 }
 .searchForm input {
@@ -88,7 +82,7 @@
   height: 40px;
   border-radius: 50%;
   border: none;
-  box-shadow: -2px 2px 5px var(--shadow-clr);
+  box-shadow: -2px 2px 5px var(--hover-clr);
   background-color: var(--dark-orange-clr);
 }
 .searchForm .submitBtn:hover {

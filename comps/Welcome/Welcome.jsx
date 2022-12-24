@@ -25,14 +25,13 @@ const Welcome = () => {
           />
           <button
             type="submit"
-            value={""}
             className={styles.submitBtn}
             // onClick={() => handleSearch()}
           >
-            <FaSearch />
+            <FaSearch color="#eee" />
           </button>
         </form>
-      <a href="#categories">Order Now</a>
+        <a href="#categories">Order Now</a>
       </div>
     </div>
   );

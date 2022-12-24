@@ -4,27 +4,30 @@
   text-indent: 5px;
 }
 .addAdForm {
-  width: 95%;
+  width: 99%;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  width: 90%;
-  padding: 0.5em;
-  margin: 1.5em auto 1.2em;
+  padding: 0.5em ;
+  margin:5px auto;
   border-radius: 8px;
   background-color: var(--sec-clr);
   box-shadow: -2px 2px 5px var(--shadow-clr);
   accent-color: var(--dark-orange-clr);
 }
+.imgCon{
+  min-height: 150px;
+}
+
 .productImg{
-width: 250px;
+width: 200px;
 }
 .side {
   width: 100%;
 }
 .label {
-  padding: 0.2em;
+  padding: 0.1em;
   cursor: pointer;
   background-color: var(--hover-clr);
   border-radius: 5px;
@@ -88,6 +91,7 @@ width: 250px;
 .submitBtn {
   width: 100px;
   margin: auto 70%;
+  padding: 5px;
 }
 .submitBtn,
 .proImgInputLabal {

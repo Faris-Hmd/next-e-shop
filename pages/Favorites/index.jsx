@@ -1,10 +1,10 @@
 /** @format */
 import Link from "next/link";
-import { db } from "../../Firebase/firebase";
 import styles from "../../styles/List.module.css";
 /** @format */
-const Fav = (props) => {
-  const favorites = JSON.parse(props.favorites);
+const Favorites = () => {
+
+  
   return (
     <div className={styles.cart}>
       <div className="label">My Favourites</div>
@@ -31,25 +31,4 @@ const Fav = (props) => {
   );
 };
 
-export default Fav;
-export async function getServerSideProps(context) {
-  const { collection, getDocs, query, where } = await import(
-    "firebase/firestore"
-  );
-  // const db = import("../../Firebase/firebase");
-
-  const { params } = context;
-  const favorites = [];
-  const querySnapshot = await getDocs(
-    query(collection(db, "favorites"), where("userId", "==", params.userId))
-  );
-
-  querySnapshot.forEach((doc) => {
-    favorites.push({ ...doc.data(), id: doc.id });
-  });
-  return {
-    props: {
-      favorites: JSON.stringify(favorites),
-    },
-  };
-}
+export default Favorites;
