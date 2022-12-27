@@ -176,7 +176,7 @@ const AddAdForm = () => {
               Product Category
             </label>
             <select
-              className={styles.input}
+              className={styles.select}
               required
               placeholder="Product Category"
               name="productCate"

@@ -5,6 +5,14 @@
 }
 .add-ad-form {
   width: 95%;
+    display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 90%;
+  padding: 0.5em;
+  margin: 1.5em auto 1.2em;
+  border-radius: 8px;
+  accent-color: var(--dark-orange-clr);
 }
 
 form,
@@ -16,8 +24,6 @@ form,
   padding: 0.5em;
   margin: 1.5em auto 1.2em;
   border-radius: 8px;
-  background-color: var(--sec-clr);
-  box-shadow: -2px 2px 5px var(--shadow-clr);
   accent-color: var(--dark-orange-clr);
 }
 .side {
@@ -34,14 +40,14 @@ select,
 textarea {
   font-family: "Nunito", sans-serif;
   width: 100%;
-  padding: 0.4em 0;
-  margin-top: 5px;
+  padding: 1em 0;
   font-size: 1rem;
   text-indent: 5px;
   color: var(--font-clr);
   border: none;
   border-bottom: 2px solid var(--hover-clr);
   background-color: var(--sec-clr);
+  border-radius: 10px;
   /* border-radius: 5px; */
 }
 input:focus {

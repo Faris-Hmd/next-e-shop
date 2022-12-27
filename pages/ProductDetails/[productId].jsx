@@ -35,7 +35,6 @@ const ProductsDetail = () => {
     ["product", productId],
     getData,
     {
-      staleTime: 5000,
       enabled: isEnabled,
     }
   );
@@ -51,8 +50,14 @@ const ProductsDetail = () => {
     }
     const dataFromCache = queryClients
       .getQueriesData("pc")[0][1]
-      ?.find((pro) => pro.id === productId);
-    if (dataFromCache) setProduct(dataFromCache);
+      ?.find((pro) => pro.id === productId)
+    console.log(dataFromCache);
+    if (dataFromCache) {
+      setProduct(dataFromCache);
+    } else {
+      console.log("set enable to true");
+      setIsEnabled(true);
+    }
   }, []); //eslint-disable-line
 
   useEffect(() => {

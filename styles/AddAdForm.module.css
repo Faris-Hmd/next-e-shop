@@ -4,29 +4,27 @@
   text-indent: 5px;
 }
 .addAdForm {
-  width: 99%;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  padding: 0.5em ;
-  margin:5px auto;
+  width: 95%;
+  padding: 0.5em;
+  margin: 1.5em auto 1.2em;
   border-radius: 8px;
-  background-color: var(--sec-clr);
-  box-shadow: -2px 2px 5px var(--shadow-clr);
   accent-color: var(--dark-orange-clr);
 }
-.imgCon{
+.imgCon {
   min-height: 150px;
 }
 
-.productImg{
-width: 200px;
+.productImg {
+  width: 200px;
 }
 .side {
   width: 100%;
 }
 .label {
+  display: none;
   padding: 0.1em;
   cursor: pointer;
   background-color: var(--hover-clr);
@@ -35,16 +33,16 @@ width: 200px;
 .input,
 .select,
 .textarea {
+  min-width: 100%;
   font-family: "Nunito", sans-serif;
-  width: 100%;
-  padding: 0.2em 0;
-  margin-top: 5px;
+  padding: 1em 0;
   font-size: 1rem;
   text-indent: 5px;
   color: var(--font-clr);
   border: none;
   border-bottom: 2px solid var(--hover-clr);
   background-color: var(--sec-clr);
+  border-radius: 10px;
 }
 .input:focus {
   background-color: none;
@@ -60,7 +58,7 @@ width: 200px;
   outline: 1px solid var(--dark-orange-clr);
 }
 .inputContainer {
-  width: 100%;
+  min-width: 100%;
   margin-bottom: 0.8em;
   display: flex;
   flex-wrap: wrap;
