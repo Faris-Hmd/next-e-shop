@@ -1,7 +1,7 @@
 /** @format */
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { useQuery } from "react-query";
 import { baseUrl } from "..";
 import styles from "../../styles/Products.module.css";
@@ -21,7 +21,7 @@ const Products = () => {
     staleTime: 20000,
   });
 
-  if (status === "loading") return <h1>loading query...</h1>;
+  if (status === "loading") return <h1>loading...</h1>;
   if (status === "error") return <h1>error </h1>;
 // useEffect(() => {console.log(products);} ,[products])
   return (
