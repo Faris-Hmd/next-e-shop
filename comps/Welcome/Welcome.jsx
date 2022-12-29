@@ -1,6 +1,6 @@
 /** @format */
 import { useState } from "react";
-import { FaSearch } from "react-icons/fa";
+// import { FaSearch } from "react-icons/fa";
 import styles from "../../styles/Welcome.module.css";
 const Welcome = () => {
   // const nav = useNavigate();
@@ -28,7 +28,7 @@ const Welcome = () => {
             className={styles.submitBtn}
             // onClick={() => handleSearch()}
           >
-            <FaSearch color="#eee" />
+            {/* <FaSearch color="#eee" /> */}
           </button>
         </form>
         <a href="#categories">Order Now</a>

@@ -1,5 +1,4 @@
 /** @format */
-
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { baseUrl } from "..";
 import { db } from "../../Firebase/firebase";
@@ -7,19 +6,31 @@ import { db } from "../../Firebase/firebase";
 export default async function handler(req, res) {
   const url = new URL(baseUrl + req.url);
   const searchParams = url.searchParams;
-  const category = searchParams.get("productCate");
-  console.log(category);
-  const querySnapShot = await getDocs(
-    query(collection(db, "products"), where("productCate", "==", category))
-  );
-  const products = querySnapShot.docs.map((product) => {
-    return {
-      ...product.data(),
-      id: product.id,
-    };
-  });
-  // console.log(products);
-
+  const category = searchParams.get("category");
+  console.log("froooom api", category);
+  let products;
+  if (category) {
+    const querySnapShot = await getDocs(
+      query(collection(db, "products"), where("productCate", "==", category))
+    );
+    products = querySnapShot.docs.map((product) => {
+      return {
+        ...product.data(),
+        id: product.id,
+      };
+    });
+  } else {
+    const querySnapShot = await getDocs(
+      query(collection(db, "products"))
+    );
+    products = querySnapShot.docs.map((product) => {
+      return {
+        ...product.data(),
+        id: product.id,
+      };
+    });
+  }
+  console.log(products);
   // const products = [
   //   {
   //     date: { seconds: 1667892373, nanoseconds: 498000000 },
@@ -177,6 +188,6 @@ export default async function handler(req, res) {
   //     id: "w6HcJkchMXdEQVZI9oua",
   //   },
   // ];
-  // console.log(products);
+
   res.status(200).json(products);
 }

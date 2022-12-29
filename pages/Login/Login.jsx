@@ -3,7 +3,7 @@
 import { useContext, useEffect, useState } from "react";
 import styles from "../../styles/Login.module.css";
 import { UserContext } from "../../Context/UserProvider";
-import { FcGoogle } from "react-icons/fc";
+// import { FcGoogle } from "react-icons/fc";
 import { useRouter } from "next/router";
 const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -26,7 +26,7 @@ const Login = () => {
             setIsLoading(true);
           }}
         >
-          <FcGoogle widths={50} />
+          {/* <FcGoogle widths={50} /> */}
           SignIn with google
         </div>
       </div>

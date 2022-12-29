@@ -11,6 +11,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import Image from "next/image";
 const AddAdForm = () => {
   const [isUpload, setIsUpload] = useState(false);
   const [images, setImgs] = useState([]);
@@ -122,7 +123,7 @@ const AddAdForm = () => {
         <div className={styles.side}>
           <div className={styles.inputContainer}>
             {images.length > 0 && (
-              <Slider preView={2} >
+              <Slider preView={2}>
                 {images.map((img, index) => {
                   return (
                     <SwiperSlide
@@ -130,7 +131,7 @@ const AddAdForm = () => {
                       onDoubleClick={() => removeImage(img.url)}
                     >
                       <div className={styles.imgCon}>
-                        <img
+                        <Image
                           src={img.url}
                           alt={img.url}
                           className={styles.productImg}

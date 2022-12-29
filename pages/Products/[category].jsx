@@ -1,29 +1,9 @@
 /** @format */
 import Link from "next/link";
-import { useRouter } from "next/router";
-// import { useEffect } from "react";
-import { useQuery } from "react-query";
 import { baseUrl } from "..";
 import styles from "../../styles/Products.module.css";
-const getData = async ({ queryKey }) => {
-  const category = queryKey[1];
-  // console.log(category);
-  return await fetch(`${baseUrl}/api/getProducts?productCate=${category}`).then(
-    (res) => {
-      return res.json();
-    }
-  );
-};
-const Products = () => {
-  const router = useRouter();
-  const category = router.query.category;
-  const { data: products, status } = useQuery([category, category], getData, {
-    staleTime: 20000,
-  });
 
-  if (status === "loading") return <h1>loading...</h1>;
-  if (status === "error") return <h1>error </h1>;
-// useEffect(() => {console.log(products);} ,[products])
+const Products = ({ products }) => {
   return (
     <>
       <div className="label">Products</div>
@@ -61,3 +41,23 @@ const Products = () => {
 };
 
 export default Products;
+export const getStaticProps = async (context) => {
+  // console.log(context.params.category);
+  const res = await fetch(
+    `${baseUrl}/api/getProducts?category=${context.params.category}`
+  );
+  const products = await res.json();
+  // console.log(products);
+  return {
+    props: {
+      products,
+    },
+  };
+};
+
+export const getStaticPaths = async () => {
+  return {
+    paths: [{ params: { category: "pc" } }, { params: { category: "phones" } }],
+    fallback: false,
+  };
+};

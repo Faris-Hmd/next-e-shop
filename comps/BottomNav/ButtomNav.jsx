@@ -1,13 +1,13 @@
 /** @format */
 import styles from "../../styles/ButtomNav.module.css";
-import { FaBars, FaHome } from "react-icons/fa";
-import { FaRegStar } from "react-icons/fa";
-import { BiPlusCircle } from "react-icons/bi";
+// import { FaBars, FaHome } from "react-icons/fa";
+// import { FaRegStar } from "react-icons/fa";
+// import { BiPlusCircle } from "react-icons/bi";
 import Link from "next/link";
 const ButtomNav = () => {
   return (
     <div className={styles.buttomNav}>
-      <Link href="/" className={styles.page}>
+      {/* <Link href="/" className={styles.page}>
         <FaHome size={"20px"} /> Home
       </Link>
       <Link href="/AddAd" className={styles.page}>
@@ -19,7 +19,7 @@ const ButtomNav = () => {
       </Link>
       <Link href={"/Favorites"} className={styles.page}>
         <FaRegStar size={"19px"} /> Favorite
-      </Link>
+      </Link> */}
     </div>
   );
 };

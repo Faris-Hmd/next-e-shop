@@ -3,69 +3,15 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination, Scrollbar } from "swiper";
 import styles from "../../styles/ProductsDetail.module.css";
-import { ActionButtons } from "../../comps/ActionButton/ActionButton";
-import { useQuery, useQueryClient } from "react-query";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+// import { ActionButtons } from "../../comps/ActionButton/ActionButton";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { baseUrl } from "..";
 
-const getData = async ({ queryKey }) => {
-  const productId = queryKey[1];
-  // console.log(productId);
-  return await fetch(
-    `${baseUrl}/api/getProductDetail?productId=${productId}`
-  ).then((res) => {
-    return res.json();
-  });
-};
-
-const ProductsDetail = () => {
+const ProductsDetail = ({ product }) => {
   SwiperCore.use([Navigation, Pagination]);
-  const router = useRouter();
-  const productId = router.query.productId;
-  const [product, setProduct] = useState();
-  const [isEnabled, setIsEnabled] = useState(false);
-  const queryClients = useQueryClient();
-
-  const { data: fetchedData, status } = useQuery(
-    ["product", productId],
-    getData,
-    {
-      enabled: isEnabled,
-    }
-  );
-
-  useEffect(() => {
-    // console.log(category);
-    //if the data is not in cache then fetch it
-    if (queryClients.getQueriesData("pc").length === 0) {
-      console.log(queryClients.getQueriesData("pc").length);
-      console.log("set enable to true");
-      setIsEnabled(true);
-      return;
-    }
-    const dataFromCache = queryClients
-      .getQueriesData("pc")[0][1]
-      ?.find((pro) => pro.id === productId)
-    console.log(dataFromCache);
-    if (dataFromCache) {
-      setProduct(dataFromCache);
-    } else {
-      console.log("set enable to true");
-      setIsEnabled(true);
-    }
-  }, []); //eslint-disable-line
-
-  useEffect(() => {
-    // fetchedData && console.log(fetchedData);
-    fetchedData && setProduct(fetchedData);
-  }, [fetchedData]);
-  if (status === "loading") return <h1>Loading query</h1>;
-  if (status === "error") return <h1>Error</h1>;
 
   return (
     product && (
@@ -77,7 +23,7 @@ const ProductsDetail = () => {
           navigation={true}
           pagination={{ clickable: true }}
         >
-          {product.productImgs.map((img, index) => {
+          {product.productImgs?.map((img, index) => {
             return (
               <SwiperSlide key={index}>
                 <img
@@ -96,7 +42,7 @@ const ProductsDetail = () => {
         </div>
         <div className={styles.rating}>Rating : {product.rating}</div>
         <div className="sep-line"></div>
-        <ActionButtons product={product} />
+        {/* <ActionButtons product={product} /> */}
         <div className="sep-line"></div>
         <div className="label">Description</div>
         <div className={styles.desc}>{product.productDesc}</div>
@@ -113,10 +59,29 @@ const ProductsDetail = () => {
 };
 
 export default ProductsDetail;
-// function loginRequest(nav) {
-//   return (
-//     <div className="login-request" onClick={() => nav("/login")}>
-//       You neen to be login to write comment
-//     </div>
-//   );
-// }
+export const getStaticProps = async (context) => {
+  const res = await fetch(
+    `${baseUrl}/api/getProductDetail?productId=${context.params.productId}`
+  );
+  const product = await res.json();
+
+  return {
+    props: {
+      product,
+    },
+  };
+};
+
+export const getStaticPaths = async () => {
+  const res = await fetch(`${baseUrl}/api/getProducts`);
+  const products = await res.json();
+  const ids = products.map((pro) => pro.id);
+  const paths = ids.map((id) => ({
+    params: { productId: id.toString() },
+  }));
+
+  return {
+    paths,
+    fallback: false,
+  };
+};
