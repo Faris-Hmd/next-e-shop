@@ -9,6 +9,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { baseUrl } from "..";
+import Image from "next/image";
 
 const ProductsDetail = ({ product }) => {
   SwiperCore.use([Navigation, Pagination]);
@@ -26,7 +27,10 @@ const ProductsDetail = ({ product }) => {
           {product.productImgs?.map((img, index) => {
             return (
               <SwiperSlide key={index}>
-                <img
+                <Image
+                  width={450}
+                  height={200}
+                  loader={() => img.url}
                   src={img.url}
                   alt={img.url}
                   className={styles.productImgs}

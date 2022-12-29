@@ -4,21 +4,34 @@
   text-indent: 5px;
 }
 .addAdForm {
+  height: 100%;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  width: 95%;
+  width: clac(100% - 1em);
   padding: 0.5em;
-  margin: 1.5em auto 1.2em;
+  margin: auto;
   border-radius: 8px;
   accent-color: var(--dark-orange-clr);
 }
-.imgCon {
-  min-height: 150px;
-}
-
+/* .imgsCon {
+  min-height: 300px;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-image: url("/vercel.svg");
+  background-size: 100px;
+} */
 .productImg {
-  width: 200px;
+  min-height: 230px;
+  max-height: 230px;
+  object-fit: cover;
+  object-position: center;
+  /* aspect-ratio: 16/9; */
+  max-width: 100%;
+  min-width: 100%;
+  border-radius: 5px;
+  margin: auto;
+  margin-bottom: 30px;
 }
 .side {
   width: 100%;
@@ -131,8 +144,8 @@ input.resetBtn:hover {
   border-color: crimson;
 }
 @media (min-width: 750px) {
-  .loginForm {
-    width: 350px;
+  .addAdForm {
+    /* width: 350px; */
   }
   .side {
     width: 45%;

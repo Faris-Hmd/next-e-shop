@@ -6,8 +6,8 @@
 }
 
 .productDetail .productImgs {
-  min-height: 230px;
-  max-height: 230px;
+  min-height: 240px;
+  max-height: 240px;
   object-fit: cover;
   object-position: center;
   /* aspect-ratio: 16/9; */

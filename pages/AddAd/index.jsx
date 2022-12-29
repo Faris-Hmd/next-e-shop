@@ -121,22 +121,22 @@ const AddAdForm = () => {
         className={styles.addAdForm}
       >
         <div className={styles.side}>
-          <div className={styles.inputContainer}>
+          <div className={styles.inputContainer + " " + styles.imgsCon}>
             {images.length > 0 && (
-              <Slider preView={2}>
+              <Slider preView={1}>
                 {images.map((img, index) => {
                   return (
                     <SwiperSlide
                       key={index}
                       onDoubleClick={() => removeImage(img.url)}
                     >
-                      <div className={styles.imgCon}>
-                        <Image
-                          src={img.url}
-                          alt={img.url}
-                          className={styles.productImg}
-                        />
-                      </div>
+                      <Image
+                        width={450}
+                        height={180}
+                        src={img.url}
+                        alt={img.url}
+                        className={styles.productImg}
+                      />
                     </SwiperSlide>
                   );
                 })}

@@ -24,6 +24,7 @@ a {
   font-family: "Nunito", sans-serif;
   scroll-behavior: smooth;
 }
+
 .swiper {
   display: flex;
   justify-content: center;
@@ -34,7 +35,6 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 .swiper-button-prev::after,
 .swiper-button-next::after {
@@ -131,7 +131,7 @@ a {
   scrollbar-width: thin;
 }
 
-main {
+.main {
   overflow-x: hidden;
   grid-area: main;
   scrollbar-width: thin;
