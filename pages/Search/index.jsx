@@ -23,6 +23,7 @@ const Search = () => {
     <div className={styles.cart}>
       <form className={styles.searchForm} onSubmit={handleSearch}>
         <input
+          autoFocus
           type="text"
           placeholder="Type what you are search for"
           onChange={(e) => {
