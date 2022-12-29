@@ -59,7 +59,7 @@ const ProductsDetail = ({ product }) => {
 };
 
 export default ProductsDetail;
-export const getStaticProps = async (context) => {
+export async function getStaticProps(context) {
   const res = await fetch(
     `${baseUrl}/api/getProductDetail?productId=${context.params.productId}`
   );
@@ -70,9 +70,9 @@ export const getStaticProps = async (context) => {
       product,
     },
   };
-};
+}
 
-export const getStaticPaths = async () => {
+export async function getStaticPaths() {
   const res = await fetch(`${baseUrl}/api/getProducts`);
   const products = await res.json();
   const ids = products.map((pro) => pro.id);
@@ -84,4 +84,4 @@ export const getStaticPaths = async () => {
     paths,
     fallback: false,
   };
-};
+}

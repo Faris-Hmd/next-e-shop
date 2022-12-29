@@ -41,7 +41,7 @@ const Products = ({ products }) => {
 };
 
 export default Products;
-export const getStaticProps = async (context) => {
+export async function getStaticProps(context) {
   // console.log(context.params.category);
   const res = await fetch(
     `${baseUrl}/api/getProducts?category=${context.params.category}`
@@ -53,11 +53,11 @@ export const getStaticProps = async (context) => {
       products,
     },
   };
-};
+}
 
-export const getStaticPaths = async () => {
+export async function getStaticPaths() {
   return {
     paths: [{ params: { category: "pc" } }, { params: { category: "phones" } }],
     fallback: false,
   };
-};
+}
