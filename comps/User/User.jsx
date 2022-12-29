@@ -2,14 +2,14 @@
 import { useContext } from "react";
 // import { Link } from "react-router-dom";
 import { UserContext } from "../../Context/UserProvider";
-import styles from  "./User.module.css";
+import styles from "./User.module.css";
 const UserProfile = () => {
-  const { user } = useContext(UserContext);
+  const { currentUser } = useContext(UserContext);
   return (
     <div className={styles.user}>
       <div className={styles.userDetail}>
-        <img src={user.profileImg} alt={user.profileImg} />
-        <div className={styles.userName}>{user.name}</div>
+        <img src={currentUser.profileImg} alt={currentUser.profileImg} />
+        <div className={styles.userName}>{currentUser.name}</div>
       </div>
     </div>
   );

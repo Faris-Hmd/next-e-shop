@@ -3,7 +3,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination, Scrollbar } from "swiper";
 import styles from "../../styles/ProductsDetail.module.css";
-// import { ActionButtons } from "../../comps/ActionButton/ActionButton";
+import { ActionButtons } from "../../comps/ActionButton/ActionButton";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -42,7 +42,7 @@ const ProductsDetail = ({ product }) => {
         </div>
         <div className={styles.rating}>Rating : {product.rating}</div>
         <div className="sep-line"></div>
-        {/* <ActionButtons product={product} /> */}
+        <ActionButtons product={product} />
         <div className="sep-line"></div>
         <div className="label">Description</div>
         <div className={styles.desc}>{product.productDesc}</div>

@@ -1,43 +1,11 @@
 /** @format */
 import { createContext, useEffect, useState } from "react";
-// import { app } from "../Firebase/firebase";
 
 export const UserContext = createContext();
 
 export const UserProvider = (props) => {
   const [currentUser, setCurrentUser] = useState(null);
-  const getRedirectResultFunc = async () => {
-  //   const { getRedirectResult } = import("firebase/auth");
-  //   const { getAuth } = await import("firebase/auth");
-  //   const auth = getAuth(app);
-  //   getRedirectResult(auth)
-  //     .then((result) => {
-  //       const user = result.user;
-  //       window.localStorage.setItem("currentUser", JSON.stringify(user));
-  //       window.localStorage.setItem("loginReq", "false");
-  //       setUserData(user);
-  //     })
-  //     .catch((error) => {
-  //       window.localStorage.setItem("loginReq", "false");
-  //       console.log(error);
-  //     });
-  };
 
-  useEffect(() => {
-    if (window.localStorage.getItem("currentUser") !== null) {
-      const user = JSON.parse(window.localStorage.getItem("currentUser"));
-      setUserData(user);
-    }
-    if (
-      window.localStorage.getItem("currentUser") === null &&
-      window.localStorage.getItem("loginReq") === "true"
-    ) {
-      getRedirectResultFunc();
-    }
-  }, []); //eslint-disable-line
-  // console.log("rerender auth pro");
-
-  // -------------------- setUserData method ------------------
   const setUserData = (user) => {
     setCurrentUser({
       id: user.uid,
@@ -46,38 +14,32 @@ export const UserProvider = (props) => {
       profileImg: user.providerData[0].photoURL,
     });
   };
-  //------------------------ LOGIN ------------------
-  const handleLogin = async () => {
-  //   const { GoogleAuthProvider } = import("firebase/auth");
-  //   const provider = new GoogleAuthProvider();
-  //   const { signInWithRedirect } = import("firebase/auth");
-  //   const { getAuth } = await import("firebase/auth");
-  //   const auth = getAuth(app);
-  //   signInWithRedirect(auth, provider).then(
-  //     window.localStorage.setItem("loginReq", "true")
-  //   );
-  };
+
   //----------------------- SIGNOUT -----------------------
   const handleSignout = async () => {
-  //   const { getAuth } = await import("firebase/auth");
-  //   const auth = getAuth(app);
-  //   console.log("from out");
-  //   auth
-  //     .signOut()
-  //     .then(() => {
-  //       setCurrentUser(null);
-  //       window.localStorage.removeItem("currentUser");
-  //     })
-  //     .catch((e) => console.log(e));
+    const { auth } = await import("../Firebase/firebase");
+    console.log("from out");
+    auth
+      .signOut()
+      .then(() => {
+        setCurrentUser(null);
+        window.localStorage.removeItem("currentUser");
+      })
+      .catch((e) => console.log(e));
   };
+
+  useEffect(() => {
+    if (window.localStorage.getItem("currentUser") !== null) {
+      const user = JSON.parse(window.localStorage.getItem("currentUser"));
+      setUserData(user);
+    }
+  }, []);
   return (
     <UserContext.Provider
       value={{
-        user: currentUser,
-        fetchUserData: setUserData,
-        setCurrentUser: setCurrentUser,
-        handleLogin: handleLogin,
-        handleSignout: handleSignout,
+        currentUser,
+        setCurrentUser,
+        handleSignout,
       }}
     >
       {props.children}
