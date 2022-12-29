@@ -1,19 +1,20 @@
 /** @format */
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import styles from "../../styles/Welcome.module.css";
 const Welcome = () => {
-  // const nav = useNavigate();
+  const nav = useRouter();
   const [term, setTerm] = useState("");
-  // const handleSearch = () => {
-  //   nav("/search/" + term);
-  // };
+  const goToSearchPage = () => {
+    nav.push("/Search");
+  };
   return (
     <div className={styles.front}>
       <div className={styles.welcome}>
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio rem
         <br />
-        <form className={styles.searchForm}>
+        <form className={styles.searchForm} onClick={goToSearchPage}>
           <input
             className={styles.formInput}
             type="text"
@@ -21,12 +22,11 @@ const Welcome = () => {
               setTerm(e.target.value);
             }}
             value={term}
-            placeholder="type what you are search for"
+            placeholder="Type what you are search for"
           />
           <button
-            type="submit"
+            // type="submit"
             className={styles.submitBtn}
-            // onClick={() => handleSearch()}
           >
             <FaSearch color="#eee" />
           </button>
